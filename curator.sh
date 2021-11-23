@@ -9,7 +9,7 @@ generate_usdz () {
 	curl -s $image_uri -o models/$model/tmp/$uri_hash.png
 	cp models/$model/tmp/$uri_hash.png models/$model/nft.png
 	usdz_filename=models/"$model"/exports/"$uri_hash".usdz
-	lib/usdzconvert/usdzconvert models/"$model"/"$model".fbx $usdz_filename
+	lib/usdzconvert/usdzconvert models/$model/$model.fbx $usdz_filename
 	rm -rf models/$model/tmp/$uri_hash.png
 }
 
