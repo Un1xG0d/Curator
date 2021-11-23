@@ -18,29 +18,29 @@
       <br>
       <input type="submit" name="submit" value="View in AR">
     </form>
-    <?php
-    $context = stream_context_create(
-      array(
-        "http" => array(
-            "header" => "Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/12.0 Mobile/15A372 Safari/604.1"
-        )
-      )
-    );
-
-    if (!empty($_POST['model']) && !empty($_POST['opensea_url'])){
-      $model=$_POST['model'];
-      $opensea_url=$_POST['opensea_url'];
-      $url_parts=explode("/", $opensea_url);
-      $token_id=$url_parts[count($url_parts)-1];
-      $contract_address=$url_parts[count($url_parts)-2];
-      $opensea_api_url="https://api.opensea.io/api/v1/asset/$contract_address/$token_id/?format=json";
-      $metadata = json_decode(file_get_contents($opensea_api_url, false, $context), true);
-      $image_uri=$metadata["image_original_url"];
-      shell_exec(". /var/www/html/lib/.bashrc && cd /var/www/html/ && bash curator.sh $model $image_uri");
-      echo "<script type='text/javascript'>window.location = 'models/$model/exports/".base64_encode($image_uri).".usdz'</script>";
-    }
-    ?>
   </center>
+  <?php
+  $context = stream_context_create(
+    array(
+      "http" => array(
+          "header" => "Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/12.0 Mobile/15A372 Safari/604.1"
+      )
+    )
+  );
+
+  if (!empty($_POST['model']) && !empty($_POST['opensea_url'])){
+    $model=$_POST['model'];
+    $opensea_url=$_POST['opensea_url'];
+    $url_parts=explode("/", $opensea_url);
+    $token_id=$url_parts[count($url_parts)-1];
+    $contract_address=$url_parts[count($url_parts)-2];
+    $opensea_api_url="https://api.opensea.io/api/v1/asset/$contract_address/$token_id/?format=json";
+    $metadata = json_decode(file_get_contents($opensea_api_url, false, $context), true);
+    $image_uri=$metadata["image_original_url"];
+    shell_exec(". /var/www/html/lib/.bashrc && cd /var/www/html/ && bash curator.sh $model $image_uri");
+    echo "<script type='text/javascript'>window.location = 'models/$model/exports/".base64_encode($image_uri).".usdz'</script>";
+  }
+  ?>
   <script type='text/javascript'>
     document.getElementById("opensea_url").focus();
   </script>
