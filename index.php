@@ -13,8 +13,8 @@
       <br>
       <select name="model" id="model">
         <option value="" disabled selected>Select AR model:</option>
-        <option value="wood_block">Wooden stand</option>
-        <option value="display_case">Display case</option>
+        <option value="wood_block">Wooden block</option>
+        <option value="easel">Easel</option>
       </select>
       <br>
       <input type="submit" name="submit" value="View in AR">
