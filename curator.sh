@@ -12,6 +12,7 @@ then
 	cp models/$model/tmp/$uri_hash.png models/$model/nft.png
 	usdz_filename=models/"$model"/exports/"$uri_hash".usdz
 	lib/usdzconvert/usdzconvert models/"$model"/"$model".fbx $usdz_filename
+	rm -rf models/$model/tmp/$uri_hash.png
 elif [ $model = "test" ]
 then
     echo "Test passed"
