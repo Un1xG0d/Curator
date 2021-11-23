@@ -12,7 +12,7 @@
       <input type="text" name="opensea_url" id="opensea_url" placeholder="OpenSea URL:">
       <br>
       <select name="model" id="model">
-        <option value="" disabled selected>Select AR model:</option>
+        <option value="" disabled selected>Select 3D model:</option>
         <option value="wood_block">Wooden block</option>
         <option value="easel">Easel</option>
       </select>
