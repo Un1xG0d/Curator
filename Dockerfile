@@ -2,7 +2,7 @@ FROM php:8.0-apache
 WORKDIR /var/www/html
 COPY curator.sh .
 COPY index.php .
-COPY css/ css/
+COPY styles.css .
 COPY lib/ lib/
 COPY models/ models/
 RUN apt update -y
