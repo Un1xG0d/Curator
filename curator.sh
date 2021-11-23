@@ -1,6 +1,5 @@
 #!/bin/bash
 #usage: bash curator.sh <model> <image_uri>
-#example: bash curator.sh wood_block https://ipfs.io/ipfs/QmQHrJuvjKSsa3BDd8BVhHFKExjy61vJQ2EuZ27TzEj7ed
 
 model=$1
 image_uri=$2
