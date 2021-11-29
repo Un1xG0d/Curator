@@ -3,21 +3,14 @@ html {
   margin: 0;
 }
 
-input[type=submit] {
-  font-size: 16px;
-  width: 100%;
-}
-
 input[type=text] {
   border: none;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
   width: 95%;
-  border-radius: 20px 20px 20px 20px;
 }
 
-select {
-  font-size: 16px;
-  width: 100%;
+.thumbnail_image {
+  border: 0;
+  padding: 10px;
+  height: 125px;
+  width: 125px;
 }

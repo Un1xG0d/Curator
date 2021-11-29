@@ -8,15 +8,17 @@
 <body>
   <center>
     <form name='form' method='post' action="index.php">
-      <input type="text" name="opensea_url" id="opensea_url" placeholder="OpenSea URL:">
+      <input type="text" name="opensea_url" id="opensea_url" placeholder="OpenSea link:">
       <br>
-      <select name="model" id="model">
-        <option value="" disabled selected>Select 3D model:</option>
-        <option value="easel">Easel</option>
-        <option value="wood_block">Wooden block</option>
-      </select>
       <br>
-      <input type="submit" name="submit" value="View in AR">
+      <button type="submit" name="model" id="model" value="easel">
+        <img class="thumbnail_image" src="img/thumbnail_easel.png">
+        <div>Easel</div>
+      </button>
+      <button type="submit" name="model" id="model" value="wood_block">
+        <img class="thumbnail_image" src="img/thumbnail_wood_block.png">
+        <div>Wooden block</div>
+      </button>
     </form>
   </center>
   <?php
