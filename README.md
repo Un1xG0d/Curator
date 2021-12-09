@@ -3,8 +3,8 @@ Use augmented reality to transform your room into a museum for interactively vie
 
 ## Build Docker container
 ```
-docker build -t site:latest .
-docker run -d -p 80:80 site:latest
+docker build -t curator:latest .
+docker run -d -p 80:80 curator:latest
 ```
 
 ## Usage
