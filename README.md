@@ -8,9 +8,8 @@ docker run -d -p 80:80 site:latest
 ```
 
 ## Usage
-1. View your token on the OpenSea iOS app.
+1. View your token on the OpenSea website or iOS app.
 2. Tap the **Share** button and copy the URL to your clipboard.
 3. Paste the URL into the specified textfield on Curator’s index page.
-4. Select the 3D model you want to customize.
-5. Tap the **View in AR** button to generate your USDZ file.
-6. Aim your iPhone at a flat surface (like a table or the floor) and let the camera stabilize.
+4. Tap the 3D model you want to customize.
+5. Aim your iPhone at a flat surface (like a table or the floor) and let the camera stabilize.
