@@ -8,6 +8,7 @@
 </head>
 <body>
   <center>
+    <br>
     <div class="card shadow">
       <span style="font-size: 25px;">Using </span><span style="font-size: 35px;">Curator</span><span style="font-size: 25px;"> is easy!</span>
       <ul>
@@ -25,6 +26,14 @@
       <button type="submit" name="model" id="model" value="easel">
         <img class="thumbnail_image" src="img/thumbnail_easel.png">
         <div>Easel</div>
+      </button>
+      <button type="submit" name="model" id="model" value="glass_case">
+        <img class="thumbnail_image" src="img/thumbnail_placeholder.png">
+        <div>Glass display case</div>
+      </button>
+      <button type="submit" name="model" id="model" value="picture_frame">
+        <img class="thumbnail_image" src="img/thumbnail_picture_frame.png">
+        <div>Picture frame</div>
       </button>
       <button type="submit" name="model" id="model" value="wood_block">
         <img class="thumbnail_image" src="img/thumbnail_wood_block.png">

@@ -15,16 +15,14 @@ button {
   width: 150px;
   height: 150px;
   display: inline-block;
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
   text-align: center;
   padding-top: 6px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 10px;
   position: relative;
   border: none;
   background: #109bce;
-  background-image: linear-gradient(bottom, rgb(14,137,182) 0%, rgb(22,179,236) 100%);
   border-radius: 5px;
   box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #07526e, 0px 10px 5px #999;
 }
