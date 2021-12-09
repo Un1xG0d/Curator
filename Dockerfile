@@ -3,6 +3,7 @@ WORKDIR /var/www/html
 COPY curator.sh .
 COPY index.php .
 COPY styles.css .
+COPY img/ img/
 COPY lib/ lib/
 COPY models/ models/
 RUN apt update -y
