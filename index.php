@@ -38,7 +38,7 @@
     $contract_address=$url_parts[count($url_parts)-2];
     $opensea_api_url="https://api.opensea.io/api/v1/asset/$contract_address/$token_id/?format=json";
     $metadata = json_decode(file_get_contents($opensea_api_url, false, $context), true);
-    $image_uri=$metadata["image_original_url"];
+    $image_uri=$metadata["image_url"];
     shell_exec(". /var/www/html/lib/.bashrc && cd /var/www/html/ && bash curator.sh $model $image_uri");
     echo "<script type='text/javascript'>window.location = 'models/$model/exports/".base64_encode($image_uri).".usdz'</script>";
   }
