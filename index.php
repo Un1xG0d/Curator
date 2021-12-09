@@ -8,17 +8,17 @@
 </head>
 <body>
   <center>
+    <div class="card shadow">
+      <span style="font-size: 25px;">Using </span><span style="font-size: 35px;">Curator</span><span style="font-size: 25px;"> is easy!</span>
+      <ul>
+        <li>Copy the link to your token on OpenSea.</li><br>
+        <li>Paste the link into the text box below.</li><br>
+        <li>Tap the 3D model you want to generate.</li><br>
+        <li>Aim your iPhone at a flat surface (like a table or the floor) and let the camera stabilize.</li>
+      </ul> 
+    </div>
+    <br>
     <form method="post" action="">
-      <div class="card shadow">
-        <span style="font-size: 25px;">Using </span><span style="font-size: 35px;">Curator</span><span style="font-size: 25px;"> is easy!</span>
-        <ul>
-          <li>Copy the link to your token on OpenSea.</li><br>
-          <li>Paste the link into the text box below.</li><br>
-          <li>Tap the 3D model you want to generate.</li><br>
-          <li>Aim your iPhone at a flat surface (like a table or the floor) and let the camera stabilize.</li>
-        </ul> 
-      </div>
-      <br>
       <input type="text" name="opensea_url" id="opensea_url" placeholder="OpenSea link:">
       <br>
       <br>
