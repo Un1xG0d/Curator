@@ -669,7 +669,8 @@ def process(argumentList):
         elif dstExt != '.usd' and dstExt != '.usdc' and dstExt != '.usda':
             parser.printErrorUsageAndExit('output file ' + dstPath + ' should have .usdz, .usdc, .usda or .usd extension.')
 
-    tmpFolder = tempfile.mkdtemp('usdzconvert')
+    #tmpFolder = tempfile.mkdtemp('usdzconvert')
+    tmpFolder = "/var/www/html/tmp"
 
     legacyModifier = None
     if parserOut.iOS12:
