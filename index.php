@@ -31,7 +31,7 @@
         <img class="thumbnail_image" src="img/thumbnail_picture_frame.png">
         <div>Picture frame</div>
       </button>
-      <button type="submit" name="model" id="model" value="treasure_chest">
+      <button type="submit" name="model" id="model" value="">
         <img class="thumbnail_image" src="img/thumbnail_placeholder.png">
         <div>Treasure chest</div>
       </button>
