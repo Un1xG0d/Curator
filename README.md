@@ -19,7 +19,7 @@ This bash script downloads the NFT’s image and uses it to overwrite `nft.png` 
 
 The generated USDZ model can then be viewed on any iPhone that supports ARKit.
 
-## Deploy Docker container to Heroku
+## Deploy container to Heroku
 ```
 heroku container:login
 heroku labs:enable --app nftcurator runtime-new-layer-extract
