@@ -42,22 +42,16 @@
     </form>
   </center>
   <?php
-  $context = stream_context_create(
-    array(
-      "http" => array(
-          "header" => "Mozilla/5.0 (iPhone; CPU iPhone OS 15_1_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.1 Mobile/15E148 Safari/604.1"
-      )
-    )
-  );
-
   if (!empty($_POST['model']) && !empty($_POST['opensea_url'])){
     $model=$_POST['model'];
     $opensea_url=$_POST['opensea_url'];
-    $url_parts=explode("/", $opensea_url);
-    $token_id=$url_parts[count($url_parts)-1];
-    $contract_address=$url_parts[count($url_parts)-2];
+    $url_components=explode("/", $opensea_url);
+    $token_id=$url_components[count($url_components)-1];
+    $contract_address=$url_components[count($url_components)-2];
     $opensea_api_url="https://api.opensea.io/api/v1/asset/$contract_address/$token_id/?format=json";
-    $metadata = json_decode(file_get_contents($opensea_api_url, false, $context), true);
+    $user_agent=$_SERVER['HTTP_USER_AGENT']??null;
+    ini_set('user_agent', $user_agent);
+    $metadata=json_decode(file_get_contents($opensea_api_url), true);
     $image_uri=$metadata["image_url"];
     shell_exec("cd /var/www/html/ && bash curator.sh $model $image_uri");
     echo "<script type='text/javascript'>window.location = 'models/$model/exports/".base64_encode($image_uri).".usdz'</script>";
