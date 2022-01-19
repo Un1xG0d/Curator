@@ -1,6 +1,9 @@
 # Curator
 Use augmented reality to transform your room into a museum for interactively viewing your NFTs.
 
+## Video demo
+[Watch on YouTube](https://youtu.be/Vkl_d8XTU5U)
+
 ## Usage
 1. View your token on the OpenSea website or iOS app.
 2. Tap the **Share** button and copy the URL to your clipboard.
