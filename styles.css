@@ -17,6 +17,7 @@ button {
   display: inline-block;
   color: #ffffff;
   text-decoration: none;
+  font-weight: 300;
   text-align: center;
   padding-top: 6px;
   margin: 10px;
@@ -30,6 +31,27 @@ button {
 button:hover {
   top: 3px;
   box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #07526e, 0px 5px 3px #999;
+}
+
+.blockchain_buttons {
+  display: inline;
+}
+
+.blockchain_button {
+  height: 25px;
+  padding: 0.3em 1.2em;
+  text-decoration: none;
+  font-weight: 300;
+  color: #ffffff;
+  background: #109bce;
+  border: none;
+  text-align: center;
+  box-shadow: none;
+}
+
+.blockchain_button:hover {
+  top: 0;
+  box-shadow: none;
 }
 
 .card {

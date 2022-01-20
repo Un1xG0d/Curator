@@ -12,15 +12,21 @@
     <div class="card shadow">
       <span style="font-size: 25px;">Using </span><span style="font-size: 35px;">Curator</span><span style="font-size: 25px;"> is easy!</span>
       <ul>
-        <li>Copy the link to your token on OpenSea.</li><br>
-        <li>Paste the link into the text box below.</li><br>
+        <li>Copy your token's link/identifier.</li><br>
+        <li>Paste it into the text box below.</li><br>
         <li>Tap the 3D model you want to generate.</li><br>
         <li>Aim your iPhone at a flat surface (like a table or the floor) and let the camera stabilize.</li>
-      </ul> 
+      </ul>
+    </div>
+    <br>
+    <div class="blockchain_buttons">
+      <button class="blockchain_button" onclick="set_blockchain('opensea')">OpenSea</button>
+      <button class="blockchain_button" onclick="set_blockchain('wax')">Wax</button>
     </div>
     <br>
     <form method="post" action="">
-      <input type="text" name="opensea_url" id="opensea_url" placeholder="OpenSea link:">
+      <input type="text" name="opensea_url" id="opensea_url" placeholder="OpenSea token URL:">
+      <input type="text" name="wax_id" id="wax_id" placeholder="Wax asset ID:" style="display:none">
       <br>
       <br>
       <button type="submit" name="model" id="model" value="easel">
@@ -41,6 +47,17 @@
       </button>
     </form>
   </center>
+  <script>
+    function set_blockchain(chain) {
+      if (chain == "opensea") {
+        document.getElementById("opensea_url").style.display = "";
+        document.getElementById("wax_id").style.display = "none";
+      } else if (chain == "wax") {
+        document.getElementById("opensea_url").style.display = "none";
+        document.getElementById("wax_id").style.display = "";
+      }
+    }
+  </script>
   <?php
   if (!empty($_POST['model']) && !empty($_POST['opensea_url'])){
     $model=$_POST['model'];
@@ -53,6 +70,18 @@
     ini_set('user_agent', $user_agent);
     $metadata=json_decode(file_get_contents($opensea_api_url), true);
     $image_uri=$metadata["image_url"];
+    shell_exec("cd /var/www/html/ && bash curator.sh $model $image_uri");
+    echo "<script type='text/javascript'>window.location = 'models/$model/exports/".base64_encode($image_uri).".usdz'</script>";
+  }
+
+  if (!empty($_POST['model']) && !empty($_POST['wax_id'])){
+    $model=$_POST['model'];
+    $wax_id=str_replace("#", "", $_POST['wax_id']);
+    $wax_api_url="https://wax.api.atomicassets.io/atomicassets/v1/assets/$wax_id";
+    $user_agent=$_SERVER['HTTP_USER_AGENT']??null;
+    ini_set('user_agent', $user_agent);
+    $metadata=json_decode(file_get_contents($wax_api_url), true);
+    $image_uri="https://ipfs.io/ipfs/".$metadata["data"]["data"]["img"];
     shell_exec("cd /var/www/html/ && bash curator.sh $model $image_uri");
     echo "<script type='text/javascript'>window.location = 'models/$model/exports/".base64_encode($image_uri).".usdz'</script>";
   }
