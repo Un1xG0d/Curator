@@ -1,1 +1,2 @@
 lib/* linguist-vendored=true
+lib/*.sh linguist-vendored=false
