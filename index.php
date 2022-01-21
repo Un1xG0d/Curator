@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <head>
+  <title>Curator</title>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Curator</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="apple-touch-icon" href="img/logo.jpg">
 </head>
@@ -19,9 +19,12 @@
       </ul>
     </div>
     <br>
-    <div class="blockchain_buttons">
-      <button class="blockchain_button" onclick="set_blockchain('opensea')">OpenSea</button>
-      <button class="blockchain_button" onclick="set_blockchain('wax')">Wax</button>
+    <button class="change_blockchain_button" id="change_blockchain_button">Change blockchain</button>
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <button class="blockchain_button" onclick="set_blockchain('opensea')">OpenSea</button>
+        <button class="blockchain_button" onclick="set_blockchain('wax')">Wax</button>
+      </div>
     </div>
     <br>
     <form method="post" action="">
@@ -48,7 +51,12 @@
     </form>
   </center>
   <script>
+    document.getElementById("change_blockchain_button").onclick = function() {
+      document.getElementById("modal").style.display = "block";
+    }
+
     function set_blockchain(chain) {
+      document.getElementById("modal").style.display = "none";
       if (chain == "opensea") {
         document.getElementById("opensea_url").style.display = "";
         document.getElementById("wax_id").style.display = "none";
