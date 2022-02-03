@@ -70,27 +70,27 @@
   </script>
   <?php
   $stripped_chars=array("#", "&", "<", ">", ";", "*", " ", "'", "\"", "\$");
-  if (!empty($_POST['model']) && !empty($_POST['opensea_url'])){
-    $model=str_replace($stripped_chars, "", $_POST['model']);
-    $opensea_url=str_replace($stripped_chars, "", $_POST['opensea_url']);
+  if (!empty($_POST["model"]) && !empty($_POST["opensea_url"])){
+    $model=str_replace($stripped_chars, "", $_POST["model"]);
+    $opensea_url=str_replace($stripped_chars, "", $_POST["opensea_url"]);
     $url_components=explode("/", $opensea_url);
     $token_id=$url_components[count($url_components)-1];
     $contract_address=$url_components[count($url_components)-2];
     $opensea_api_url="https://api.opensea.io/api/v1/asset/$contract_address/$token_id/?format=json";
-    $user_agent=$_SERVER['HTTP_USER_AGENT']??null;
-    ini_set('user_agent', $user_agent);
+    $user_agent=$_SERVER["HTTP_USER_AGENT"]??null;
+    ini_set("user_agent", $user_agent);
     $metadata=json_decode(file_get_contents($opensea_api_url), true);
     $image_uri=$metadata["image_url"];
     shell_exec("cd /var/www/html/ && bash curator.sh $model $image_uri");
     echo "<script type='text/javascript'>window.location = 'models/$model/exports/".base64_encode($image_uri).".usdz'</script>";
   }
 
-  if (!empty($_POST['model']) && !empty($_POST['wax_id'])){
-    $model=str_replace($stripped_chars, "", $_POST['model']);
-    $wax_id=str_replace($stripped_chars, "", $_POST['wax_id']);
+  if (!empty($_POST["model"]) && !empty($_POST["wax_id"])){
+    $model=str_replace($stripped_chars, "", $_POST["model"]);
+    $wax_id=str_replace($stripped_chars, "", $_POST["wax_id"]);
     $wax_api_url="https://wax.api.atomicassets.io/atomicassets/v1/assets/$wax_id";
-    $user_agent=$_SERVER['HTTP_USER_AGENT']??null;
-    ini_set('user_agent', $user_agent);
+    $user_agent=$_SERVER["HTTP_USER_AGENT"]??null;
+    ini_set("user_agent", $user_agent);
     $metadata=json_decode(file_get_contents($wax_api_url), true);
     $image_uri="https://ipfs.io/ipfs/".$metadata["data"]["data"]["img"];
     shell_exec("cd /var/www/html/ && bash curator.sh $model $image_uri");
