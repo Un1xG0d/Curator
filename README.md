@@ -1,5 +1,5 @@
 # Curator
-Use augmented reality to transform your room into a museum for interactively viewing your NFTs.
+Use augmented reality to transform your room into a museum for interactively viewing your NFT collection. Curator generates custom [ARKit](https://developer.apple.com/augmented-reality/) experiences from your personal NFTs.
 
 ## Video demo
 [Watch on YouTube](https://youtu.be/Vkl_d8XTU5U)
