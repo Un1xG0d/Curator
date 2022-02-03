@@ -67,9 +67,10 @@
     }
   </script>
   <?php
+  $stripped_chars=array("#", "&", "<", ">", ";", "*", " ", "'", "\"", "\$");
   if (!empty($_POST['model']) && !empty($_POST['opensea_url'])){
-    $model=$_POST['model'];
-    $opensea_url=$_POST['opensea_url'];
+    $model=str_replace($stripped_chars, "", $_POST['model']);
+    $opensea_url=str_replace($stripped_chars, "", $_POST['opensea_url']);
     $url_components=explode("/", $opensea_url);
     $token_id=$url_components[count($url_components)-1];
     $contract_address=$url_components[count($url_components)-2];
@@ -83,8 +84,8 @@
   }
 
   if (!empty($_POST['model']) && !empty($_POST['wax_id'])){
-    $model=$_POST['model'];
-    $wax_id=str_replace("#", "", $_POST['wax_id']);
+    $model=str_replace($stripped_chars, "", $_POST['model']);
+    $wax_id=str_replace($stripped_chars, "", $_POST['wax_id']);
     $wax_api_url="https://wax.api.atomicassets.io/atomicassets/v1/assets/$wax_id";
     $user_agent=$_SERVER['HTTP_USER_AGENT']??null;
     ini_set('user_agent', $user_agent);
