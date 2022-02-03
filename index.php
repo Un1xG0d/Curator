@@ -12,7 +12,7 @@
     <div class="card shadow">
       <span style="font-size: 25px;">Using </span><span style="font-size: 35px;">Curator</span><span style="font-size: 25px;"> is easy!</span>
       <ul>
-        <li>Copy your token's link/identifier.</li><br>
+        <li>Copy the link to your token.</li><br>
         <li>Paste it into the text box below.</li><br>
         <li>Tap the 3D model you want to generate.</li><br>
         <li>Aim your iPhone at a flat surface (like a table or the floor) and let the camera stabilize.</li>
@@ -29,7 +29,7 @@
     <br>
     <form method="post" action="">
       <input type="text" name="opensea_url" id="opensea_url" placeholder="OpenSea token URL:">
-      <input type="text" name="wax_id" id="wax_id" placeholder="Wax asset ID:" style="display:none">
+      <input type="text" name="wax_url" id="wax_url" placeholder="Wax token URL:" style="display:none">
       <br>
       <br>
       <button type="submit" name="model" id="model" value="easel">
@@ -59,10 +59,10 @@
       document.getElementById("modal").style.display = "none";
       if (chain == "opensea") {
         document.getElementById("opensea_url").style.display = "";
-        document.getElementById("wax_id").style.display = "none";
-        document.getElementById("wax_id").value = "";
+        document.getElementById("wax_url").style.display = "none";
+        document.getElementById("wax_url").value = "";
       } else if (chain == "wax") {
-        document.getElementById("wax_id").style.display = "";
+        document.getElementById("wax_url").style.display = "";
         document.getElementById("opensea_url").style.display = "none";
         document.getElementById("opensea_url").value = "";
       }
@@ -85,10 +85,12 @@
     echo "<script type='text/javascript'>window.location = 'models/$model/exports/".base64_encode($image_uri).".usdz'</script>";
   }
 
-  if (!empty($_POST["model"]) && !empty($_POST["wax_id"])){
+  if (!empty($_POST["model"]) && !empty($_POST["wax_url"])){
     $model=str_replace($stripped_chars, "", $_POST["model"]);
-    $wax_id=str_replace($stripped_chars, "", $_POST["wax_id"]);
-    $wax_api_url="https://wax.api.atomicassets.io/atomicassets/v1/assets/$wax_id";
+    $wax_url=str_replace($stripped_chars, "", $_POST["wax_url"]);
+    $url_components=explode("/", $wax_url);
+    $token_id=$url_components[count($url_components)-1];
+    $wax_api_url="https://wax.api.atomicassets.io/atomicassets/v1/assets/$token_id";
     $user_agent=$_SERVER["HTTP_USER_AGENT"]??null;
     ini_set("user_agent", $user_agent);
     $metadata=json_decode(file_get_contents($wax_api_url), true);
