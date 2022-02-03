@@ -60,9 +60,11 @@
       if (chain == "opensea") {
         document.getElementById("opensea_url").style.display = "";
         document.getElementById("wax_id").style.display = "none";
+        document.getElementById("wax_id").value = "";
       } else if (chain == "wax") {
-        document.getElementById("opensea_url").style.display = "none";
         document.getElementById("wax_id").style.display = "";
+        document.getElementById("opensea_url").style.display = "none";
+        document.getElementById("opensea_url").value = "";
       }
     }
   </script>
